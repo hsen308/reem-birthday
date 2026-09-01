@@ -494,7 +494,7 @@
   <p class="sub">Before you scroll past &mdash; there's a gift waiting for you.</p>
 
   <div class="countdown-wrap" aria-live="polite">
-    <div class="countdown-label">Counting down to 12 PM in Beirut ♡</div>
+    <div class="countdown-label">Counting down to 12 AM in Beirut ♡</div>
     <div class="countdown" id="countdown">
       <div class="countdown-box"><strong id="cdHours">00</strong><span>hours</span></div>
       <div class="countdown-sep">:</div>
@@ -745,7 +745,7 @@
 </section>
 
 <script>
-  /* ---------- countdown to Sep 2 12 PM Beirut ---------- */
+  /* ---------- countdown to Sep 2 12 AM Beirut ---------- */
   const ZONE = 'Asia/Beirut';
 
   // Current wall-clock time in Beirut, as a Date set to the same numeric
@@ -765,10 +765,10 @@
     const now = beirutNow();
     const year = now.getFullYear();
 
-    // Sep 2 noon Beirut. In September Beirut is UTC+3, so build the target
-    // purely from Beirut's own calendar values (no manual UTC offset drift).
-    let target = new Date(year, 8, 2, 12, 0, 0);
-    if (now >= target) target = new Date(year + 1, 8, 2, 12, 0, 0);
+    // Sep 2 midnight (12 AM) Beirut time — build from Beirut's own
+    // calendar values so tracking is independent of the viewer's timezone.
+    let target = new Date(year, 8, 2, 0, 0, 0);
+    if (now >= target) target = new Date(year + 1, 8, 2, 0, 0, 0);
 
     let diff = Math.max(0, target - now);
     const hours = Math.floor(diff / (1000 * 60 * 60));
